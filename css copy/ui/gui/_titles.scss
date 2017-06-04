@@ -1,0 +1,195 @@
+/*------------------------------------*\
+    $TITLES
+\*------------------------------------*/
+/** 
+ * jA for memorabilist.com
+
+ * Titles treatments
+ */
+
+//center, style all heds
+.title--site, .hed{
+	@include text-shadow;
+	
+	text-align: center;
+}
+
+
+//the site title
+.container--title{
+	.title--site{
+		font-size: 1.5rem;	
+		position: relative;
+	}
+	
+	.title__endcap--left,
+	.title__endcap--right{
+		font-size: 2rem;
+		
+		//positioning
+		position: absolute;
+		top: 3.3rem;
+		left: -2rem;
+	
+	}
+	
+	.title__endcap--right{
+		left: 9rem;
+	}
+}
+
+.title__cap{
+	margin: 0 auto;
+	width: 200px;
+	
+	//positioning
+	position: relative;
+}
+
+.title__cap--m{
+	font-size: 8rem;
+}
+
+.title--e{
+	display: block;
+	margin-top: -1.5rem;
+	margin-left: 1rem;
+}
+
+//title statement
+.statement--title{
+	text-align: center;
+}
+
+
+
+
+
+
+
+// Secondary titles
+
+//to contain each header and bg elements
+.container--hed{
+	margin: 0 auto;
+	width: 300px;
+	margin-top: 2rem;
+	
+	//positioning	
+	position: relative;
+}
+
+.hed{
+	font-size: 3rem;
+
+	//positioning
+	position: absolute;
+
+	.title__endcap--left,
+	.title__endcap--right{
+		font-size: 1rem;
+		
+		//positioning
+		position: absolute;
+	}
+}
+
+
+/**
+ * The following classes use the "background" mixin:
+ 
+		 @mixin background($type, $name, $position: top center, $repeat: no-repeat, $size: contain, $opacity: .5);
+		 
+ */
+
+.portfolio{
+	@include background($type: title, $name: portfolio);
+	
+	height: 12.5rem;
+	
+	& + .hed{
+		bottom: 0;
+		left: 3rem;
+		
+		.title__endcap--left,
+		.title__endcap--right{
+			
+			//positioning
+			top: 2rem;
+			left: -1.8rem;
+		}
+
+		.title__endcap--right{
+			left: 9.5rem;
+		}
+	}
+}
+/*
+.dispatches{
+	@include background($type: title, $name: dispatches, $position: bottom right, $size: 12rem);
+
+	height: 5rem;
+	
+	& + .hed{
+		top: 0;
+		left: 0;
+	}
+	
+	@include media-query(tablet-and-up){
+		background-size: 23rem;
+	}
+}
+*/
+
+.biography{
+	@include background($type: title, $name: biography);	
+	
+	height: 11rem;
+	
+	& + .hed{
+		bottom: 4rem;
+		left: 2.5rem;
+		
+				
+		.title__endcap--left,
+		.title__endcap--right{
+			
+			//positioning
+			top: 1.9rem;
+			left: -1.5rem;
+		}
+
+		.title__endcap--right{
+			left: 11rem;
+		}
+	}
+}
+
+.memorabilia{
+	@include background($type: title, $name: memorabilia);
+		
+	height: 9rem;
+}
+
+.contact{
+	@include background($type: title, $name: contact);
+		
+	height: 12rem;
+	
+	& + .hed{
+		bottom: 1rem;
+		left: 5rem;
+		
+		.title__endcap--left,
+		.title__endcap--right{
+			
+			//positioning
+			top: 1.2rem;
+			left: -2.3rem;
+		}
+
+		.title__endcap--right{
+			left: 8.1rem;
+		}
+	}
+}
