@@ -1,4 +1,18 @@
+/* 
+	
+memorabilist 
+vampire
+part machine
+
+ * credit to inuitcss.com -- @inuitcss -- @csswizardry
+ * some of the base Sass for this project is lifted liberally
+ * from Harry Roberts' InuitCSS, 2013 version. Thank you for teaching me Sass.
+	
+*/
+
 @charset "UTF-8";
+
+
 /*------------------------------------*\
     STYLE.CSS
 \*------------------------------------*/
@@ -6,36 +20,25 @@
  *
  * sass --watch style.scss:style.min.css --style compressed
  *
- * Here we pull in some variables, include the inuit.css framework, then add our
- * project-specific components afterwards.
  */
 
 
 /**
- * Setup
+ * Variables
  */
 @import "vars";
-@import "inuit.css/inuit";
-
-
-
-
-
-/**
- * She’s all yours, cap’n... Begin importing your stuff here.
- */
-//@import "ui/example";
 
 
 
 /*------------------------------------*\
-    $SETTINGS
+    $BASE
 \*------------------------------------*/
 /**
- * Styling choices that express brand,
- * like colors fonts etc., stored in variables.
+ * General settings for the entire site.
  */
-@import url(http://fonts.googleapis.com/css?family=Roboto+Condensed:400,700,300);
+@import "base/resetnormalize";
+@import "base/base";
+ 
 
 /*------------------------------------*\
     $TOOLS
@@ -43,53 +46,27 @@
 /**
  * These are custom mixins and functions.
  */
-@import "ui/tools/mq";
-@import "ui/tools/mem-mixins";
-@import "ui/tools/mem-helpers";
-  
- 
- 
- 
-/*------------------------------------*\
-    $BASE
-\*------------------------------------*/
-/**
- * Default styling for unclassed HTML elements (what does an h1 look like without a class on it, etc.).
- */
-@import "ui/base/mem-default";
-
-
-
-  
-/*------------------------------------*\
-    $OBJECTS
-\*------------------------------------*/
-/**
- * Objects and abstractions, which provide structure for components.
- * (in addition to those provided by InuitCSS)
- */
+@import "tools/mixins";
+@import "tools/helpers";
 
 
 
 /*------------------------------------*\
-    $GUI
+    $TYPE
 \*------------------------------------*/
 /**
- * GUI components, which are fully styled chunks of the UI.
+ * General typography settings.
  */
-@import "ui/gui/content";
-@import "ui/gui/navigation";
-@import "ui/gui/titles";
-
-
+ @import "type/fonts";
+ @import "type/headings";
  
- 
- /*------------------------------------*\
-    $OVERRIDES
+
+/*------------------------------------*\
+    $UI
 \*------------------------------------*/
 /**
- * Overrides and helper classes which need to trump everything else that came before them.
+ * Fully styled chunks of the UI.
  */
-
+@import "ui/default";
 
 

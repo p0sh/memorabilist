@@ -1,0 +1,11 @@
+/*------------------------------------*\
+    $MEM-MIXINS
+\*------------------------------------*/
+
+
+/**
+ * Transition timing
+ */
+%transition{
+	@include vendor (transition, all, $brand-timing);
+}

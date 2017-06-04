@@ -1,0 +1,93 @@
+/*------------------------------------*\
+    $MEM-DEFAULT
+\*------------------------------------*/
+/** 
+ * jA for memorabilist.com
+ 
+ * Default element styles
+ */
+ 
+
+/**
+ * all the single DOM elements, put your styles up
+ */
+ 
+body{
+	@include text-shadow;
+	
+	background-color: $white;
+	color: $black;
+}
+
+
+
+a{
+	@extend %transition;
+	
+	color: $purpleDark;
+	padding: 0 2px;
+	
+	
+	p &, .dispatch-list li &{
+		@include vendor(transition, background .5s ease-in-out);
+		@extend %transition;
+		
+		&:hover{
+			background-color: $purpleDark;
+			color: #fff;
+		}		
+	}
+}
+
+address{
+	font-style: normal;
+}
+
+figure{
+	padding: $half-spacing-unit;
+	
+	@extend .grid__item;
+	
+	img{
+		outline: 1px solid $black;
+	}
+}
+
+figcaption{
+	@extend .smallprint;
+	padding-top: $half-spacing-unit;
+}
+
+footer{
+//	padding: 2rem;
+}
+
+h1, h2{
+	background-repeat: no-repeat;
+	font-family: $display-font-family--swash;
+}
+
+h3, h4{
+	font-family: $display-font-family--alt;
+}
+
+// keep the measure readable in grafs
+p{
+	max-width: $measure;
+	text-align: center;
+}
+
+section{
+	position: relative;
+}
+
+ul{
+	list-style: none;
+	margin: 0;
+}
+
+
+
+
+
+

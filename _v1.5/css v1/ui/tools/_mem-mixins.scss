@@ -1,0 +1,56 @@
+/*------------------------------------*\
+    $MEM-MIXINS
+\*------------------------------------*/
+
+/**
+ * Backgrounds: common settings
+ */
+@mixin background($type, $name, $position: top center, $repeat: no-repeat, $size: contain, $opacity: .5){
+	background-image: url(../img/bg__#{$type}--#{$name}.png);
+	background-position: $position;
+	background-repeat: $repeat;
+	background-size: $size;
+	opacity: $opacity;
+	
+	display: block;
+}
+
+
+/**
+ * Text-shadow settings
+ */
+@mixin text-shadow ($x: 1px, $y: 1px, $blur: 5px, $color: rgba($purpleDark, .3)){
+	text-shadow: $x $y $blur $color; 
+}
+
+
+/**
+ * Transition timing
+ */
+%transition{
+	@include vendor (transition, all, $brand-timing);
+}
+
+
+/**
+ * Icon extend
+ *
+ * Use this to extend an icon into a style,
+ * which you can't do without a mixin.
+ * (The argument is the name of the icon class.)
+ 
+ @include extend-icon(icon-arrow-right2);
+ 
+		 * NOTE TO SELF:
+		 * this only works to place icon in ::before position;
+		 * need to adapt this to work in ::after position
+ */
+@mixin extend-icon($name, $color: inherit){
+	&::before{
+		@include icon();
+		color: $color;
+	}
+
+	@extend .#{$name};
+
+}
