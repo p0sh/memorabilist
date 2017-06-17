@@ -1,8 +1,6 @@
 /* 
 	
-memorabilist 
-vampire
-part machine
+jA
 
  * credit to inuitcss.com -- @inuitcss -- @csswizardry
  * some of the base Sass for this project is lifted liberally
@@ -21,6 +19,9 @@ part machine
  * sass --watch style.scss:style.min.css --style compressed
  *
  */
+
+
+@import url('https://fonts.googleapis.com/css?family=Oswald:400,600|Roboto+Condensed:400,700');
 
 
 /**
@@ -67,6 +68,8 @@ part machine
 /**
  * Fully styled chunks of the UI.
  */
+@import "ui/imgs";
+
 @import "ui/default";
 
 

@@ -2,8 +2,6 @@
     $DEFAULT
 \*------------------------------------*/
 /** 
- * jA for ameliafowler.com
- 
  * Default element styles
  */
  
@@ -11,220 +9,178 @@
 /**
  * all the single DOM elements, put your styles up
  */
-body{	
-	background-color: $white;
-	color: $black;
-}
+ 
+body {
+	padding: 2rem .1rem 3.5rem;
+	
+	@include text-shadow;
+} 
 
-header{
-	background-color: $blue;
+section {
+	padding: 0 1.5rem;
 	position: relative;
-	
-	@include reverse-text();
-	
+}
+ 
 
-	h1{
-		letter-spacing: .05rem;
-		margin: 0;
-		padding-top: $burger-size;
-		text-align: center;
-		
-		@include media-query(tablet){
-			font-size: 3.5rem;
-			margin: 0 3rem;
-		}
-		
-		@include media-query(desk){
-		    background-color: $dkblue;
-			font-size: 1.5rem;
-		    font-weight: normal;
-		    padding-top: .5rem;
-		    padding-bottom: .5rem;
-		    position: absolute;
-		    right: 0;
-		    top: 0;
-		    text-align: center;
-		    width: 6rem;
-		    z-index: 4;
-		}
-	}
-
+a {
+	color: $crimson;
+	text-shadow: none;
+ }
+ 
+p {
+	padding: 0 0 1rem;
 }
 
-a{
-	color: $link;
-	
-	&:hover{
-		background-color: $rollover-bg;
-		border-radius: $round;
-		color: $rollover-text;
-		padding: .3rem 0;
-		text-decoration: none;
-		}
-}
 
 
 
 /**
- * classes and such
+ * classes and such			MOVE TO PARTIALS AS NEEDED
  */ 
  
-/* containers */
-.content{
-	flex: 1;
-	flex-wrap: wrap;
-	margin: 1.5rem 2rem;
-	
-	@include media-query(desk){
-		display: flex;
-		justify-content: center;
-		margin-top: 3.5rem;
-	}
+.secondfont {
+	font-family: $second-font-family;
 }
-
-.chunk{	
-	flex-basis: 0;
-	margin: .5rem 1.5rem 3rem;
-
-	@include media-query(desk){
-		flex-basis: 25%;
-		flex-grow: 1;
-	}		
-		
-	p{
-		font-size: $milli-size;
-	}
-		
-	img{
-		margin: .5em 0;
-		
-	}
-	
-	.detail-data{
-		font-weight: bold;
-	}	
-}
-
-.CTA{
-	@include CTA;
-
-	&:hover{
-		@include rollover;
-	}
-
+.displayfont {
+	font-family: $display-font-family;
 }
 
 
 
-.measure{
-	max-width: 50rem;
+.wrapper {
+	max-width: $desk-start;
+	margin: 0 auto;
 }
 
 
-/* top of page */
+
+
  
-.page_intro{
-	background-color: $blue;
-	color: $white;
-	line-height: 1.7rem;
-	padding: 1rem;
-	position: relative;
+.cta {
+	@include CTA;
 	
-	@include reverse-text();
-	@include angle(after, true);
-	&:after{
-		@include media-query(tablet){
-			height: 250%;
-		}
-	}	
-	
-	p {
-		margin: 0 2rem;
-		text-align: left;
+	&:hover {
+		@include CTA-rollover;
 	}
-	
-	.CTA{
-		@include media-query(tablet){
-		    margin: 1rem 2rem;
-			width: 50%;
-		}
-		
-		@include media-query(desk){
-			width: 30%;
-		}
-	}
-
 }
 
-.angle2{
-	@include angle(after, $bgcolor:lighten($ltblue, 15%));
-	&:after{
-		z-index: -2;
-		
-		@include media-query(tablet){
-			height: 200%;
-		}
-	}
+.contains-ctas {
+	margin: 0;
+	padding: 0;
+	text-align: center;
 }
 
 
 
-/* bottom of page */
 
-
-footer{
-	 background-color: $blue;
-	 min-height: 200px;
-	 padding-top: 1.5rem;
-	 
-	 position: fixed;
-	 bottom: 0;
-	 
-	 @include angle(before, true);
-	 &:before{
-		 @include media-query(desk){
-			height: 100%;
-		}
-	 }
-	 
-	 .CTA{
-		 width: 50%;
-		 
-		 @include media-query(desk){
-			 width: 30%;
-		 }
-	 }
- }
-
-.footerangle2{
-	@include angle(before, $bgcolor:lighten($ltblue, 15%));
-	&:before{
-		z-index: -2;
-		
-		@include media-query(desk){
-			height: 100%;
-		}
-	}
-}
-
-#contact #footer-contact{
-	display: none;
-}
-
-.socialmedia{
+.title {
+	font-family: $display-font-family;
+	margin-top: -4.5rem;
 	text-align: center;
 	
-	& a{
-		margin: .5rem;
-		
-		&:hover{
-			background-color: inherit;
-		}
+	@include media-query(desk) {
+		margin-left: -15rem;
 	}
+}
+.title-cap {
+	font-size: 8rem;
+}
+.title-rest {
+	font-size: 3.5rem;
+}
+
+
+
+
+
+
+.section-torso {
+	height: 8rem;
+}
+
+.section-head {
+	padding-top: 5rem;	
 	
-	.icon {
-		&:hover{
-			color: $rollover-bg;
+	@include media-query(desk) {
+		padding-top: 1rem;
+	}
+}
+
+.section-lwing,
+.section-rwing,
+.section-feet {
+	padding-top: 10rem;
+}
+
+.section-lwing {
+	@include media-query(desk) {
+		
+		div {
+	        position: absolute;
+		    width: 30%;
+		    top: 10rem;
+		    left: 1rem;
 		}
 	}
+}
+
+.section-heart {
+	min-height: 10rem;	
+	padding-top: 1rem;
+	padding-bottom: 1rem;
+
+	@include media-query(desk) {
+		div {
+		    min-height: 1rem;
+		    
+		    position: absolute;
+		    width: 30%;
+		    top: 7rem;
+		    right: 1rem;
+		}
+	}	
+}
+
+.section-rwing {
+	@include media-query(desk) {
+		div {
+		    position: absolute;
+		    width: 60%;
+		    top: 20rem;
+		    left: 34%;
+		}
+	}
+}
+
+.section-feet {
+	@include media-query(desk) {
+		div {
+			position: absolute;
+		    top: 22rem;
+		    left: 0;
+		    right: 0;
+	    }
+	}
+}
+
+
+
+
+
+
+.project-links {
+	padding-top: 5rem;
+	text-align: center;
+
+	@include media-query(desk) {
+		padding-top: 0;
+	}	
+	
+	a {
+		display: block;
+	}
+}
+
+.coming-soon {
+	color: $grey;
 }

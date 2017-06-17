@@ -126,7 +126,7 @@
 /**
  * Text-shadow settings
  */
-@mixin text-shadow ($x: 1.5px, $y: 2px, $blur: 0px, $color: $_VAR_){
+@mixin text-shadow ($x: 1px, $y: 1px, $blur: 1.5px, $color: $grey){
 	text-shadow: $x $y $blur $color; 
 }
 
@@ -141,15 +141,23 @@
 /**
  * General CTA style
  */
-@mixin CTA($bg: $_VAR_, $text: $_VAR_, $margin: .5rem auto 1rem, $padding: .3rem 0){
+@mixin CTA($bg: $greyLight, $text: $black, $margin: .5rem auto 1rem, $padding: 0.2rem 1rem){
 	background-color: $bg;
 	border-radius: $round;
 	color: $text;
-	display: block;
+	display: inline-block;
+	font-family: $second-font-family;
+	letter-spacing: .05rem;
 	margin: $margin;
 	padding: $padding;
 	text-align: center;
 	text-decoration: none;	
+	text-shadow: none;
+}
+
+@mixin CTA-rollover($bg: $greyDarkest, $text: $white){
+	background-color: $bg;
+	color: $text;
 }
 
 /**

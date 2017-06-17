@@ -5,8 +5,8 @@
 /**
  * CONFIG variables, from BFoo
  */
-$fontPath:              "/fonts/";
-// $imgPath:               "../img/";
+$fontPath:              "./fonts/";
+// $imgPath:               "./img/";
 
 
 /*------------NOTE TO SELF------------*\
@@ -49,9 +49,15 @@ $half-spacing-unit: $base-spacing-unit / 2!default;
 $line-height-ratio: $base-line-height / $base-font-size;
 
 /**
- * Base font-family.
+ * Base font-family
+ 
+ from Google: Oswald:400,600|Roboto Condensed:400,700
  */
-$base-font-family:  NAME HERE;
+$base-font-family:  	"lmroman10", serif!default;
+$second-font-family:	"Oswald", sans-serif!default; 
+
+$display-font-family:	"kilkenny", sans-serif!default;
+$display2-font-family:	"greatvic", sans-serif!default;
 
 
 /**
@@ -60,13 +66,28 @@ $base-font-family:  NAME HERE;
 
 // $color:					#BADASS;
 
+$black:					#252225;
+$white:					#f8f8f8;
+
+
+$grey:					lighten($black, 50%);
+$greyLight:				lighten($black, 80%);
+$greyDarker:			lighten($black, 30%);
+$greyDarkest:			lighten($black, 10%);
+
+$crimson:				#b20000;
+
+$purple:				#5B006D;
+$purpleLight:			lighten($purple, 80%);
+$purpleDark:			darken($purple, 10%);
+
 
 
 /**
  * BREAKPOINTS
  */
 
-// $bkpt-name:				000px;
+$desk-start:				1024px;
 
 
 
@@ -75,7 +96,7 @@ $base-font-family:  NAME HERE;
  */
  
 $timing: 			.2s;
-$round:				5px;
+$round:				2.5px;
 
 
 

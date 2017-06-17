@@ -1,0 +1,69 @@
+/*------------------------------------*\
+    $IMAGES
+\*------------------------------------*/
+/** 
+ * images
+ */
+ 
+
+ /* section bg imgs */ 
+ @mixin section-bgs($bgimg, $bgpos: inherit, $bgsize: contain){
+	background-image: $bgimg;
+	background-position: $bgpos;
+	background-repeat: no-repeat;
+	background-size: $bgsize;
+}
+
+.section-head{
+	@include section-bgs($bgimg: url(../img/head.png), $bgpos: center top, $bgsize: 60% auto);
+
+	@include media-query(desk){ 
+	    background-position-x: 43%;
+		background-size: 20%;
+	}
+		
+}
+.section-lwing{
+	@include section-bgs($bgimg: url(../img/lwing.png));
+}
+
+.section-torso{
+	@include section-bgs($bgimg: url(../img/torso.png), $bgpos: center, $bgsize: 50% auto);
+	
+	@include media-query(desk) {
+	    background-size: 18% auto;
+	    margin-top: -10.75rem;
+	}
+}
+.section-heart{
+	@include section-bgs($bgimg: url(../img/heart.png), $bgpos: center 3rem, $bgsize: 60px auto);
+	
+	@include media-query(desk) {
+		background-position: center top;
+		margin-top: -5.5rem;
+	}
+}
+.section-rwing{
+	@include section-bgs($bgimg: url(../img/rwing.png));
+	
+	@include media-query(desk) {
+		background-position-x: right;
+		margin-top: -15.5rem;
+	}
+}
+
+.section-lwing,
+.section-rwing {
+	@include media-query(desk){ 
+		background-size: 40%;
+	}
+}
+
+.section-feet{
+	@include section-bgs($bgimg: url(../img/feet.png), $bgpos: top center);
+	
+	@include media-query(desk) {
+		background-size: 30%;
+	    margin-top: -1.25rem;
+	}
+}
