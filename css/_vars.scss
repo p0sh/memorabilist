@@ -75,7 +75,7 @@ $greyLight:				lighten($black, 80%);
 $greyDarker:			lighten($black, 30%);
 $greyDarkest:			lighten($black, 10%);
 
-$crimson:				#b20000;
+$crimson:				#9c1818;
 
 $purple:				#5B006D;
 $purpleLight:			lighten($purple, 80%);
@@ -87,7 +87,9 @@ $purpleDark:			darken($purple, 10%);
  * BREAKPOINTS
  */
 
-$desk-start:				1024px;
+$tablet-start:				768px;
+
+$desk-start:				900px;
 
 
 
@@ -95,7 +97,7 @@ $desk-start:				1024px;
  * OTHER VARS
  */
  
-$timing: 			.2s;
+$timing: 			1s;
 $round:				2.5px;
 
 

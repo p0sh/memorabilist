@@ -44,33 +44,9 @@
 
     }
 
-    @if $media-query == tablet-only{
-
-        @media only screen and (min-width:$tablet-start) and (max-width:$desk-start) { @content; }
-
-    }
-
-    @if $media-query == lap-and-up{
-
-        @media only screen and (min-width:$lap-start) { @content; }
-
-    }
-
-    @if $media-query == portable{
-
-        @media only screen and (max-width:$lap-end) { @content; }
-
-    }
-
     @if $media-query == desk{
 
         @media only screen and (min-width:$desk-start) { @content; }
-
-    }
-
-    @if $media-query == desk-wide{
-
-        @media only screen and (min-width: $desk-wide-start) { @content; }
 
     }
 
@@ -94,11 +70,15 @@
     }
 }
 
+
+
 /**
  * Create vendor-prefixed CSS in one go, e.g.
  *
    `@include vendor(border-radius, 4px);`
  *
+ *
+ * NOTE: LEAVING THIS MIXIN, THO PROBS DONT NEED IT FOR MUCH ANYMORE, HOORAY 4 SUPPORT :)
  */
 @mixin vendor($property, $value...){
     -webkit-#{$property}:$value;
@@ -117,10 +97,12 @@
  */
 
 /**
- * Transition timing
+ * Transition 
  */
-%transition{
-	@include vendor (transition, all, $timing);
+@mixin transition(){
+	transition-duration: $timing;
+	transition-property: all;
+	transition-timing-function: ease;
 }
 
 /**
@@ -158,15 +140,14 @@
 @mixin CTA-rollover($bg: $greyDarkest, $text: $white){
 	background-color: $bg;
 	color: $text;
+	
+	@include transition;
 }
 
 /**
  * Rollover style
  */
 @mixin rollover(){
-	background-color: $rollover-bg;
-	color: $rollover-text;
-	
-	@extend %transition;
+	background-color: $greyLight;
 }
 

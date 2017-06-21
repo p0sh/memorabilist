@@ -7,63 +7,172 @@
  
 
  /* section bg imgs */ 
- @mixin section-bgs($bgimg, $bgpos: inherit, $bgsize: contain){
+ @mixin section-bgs($bgimg, $bgpos: center top, $bgsize: contain){
+	background-color: transparent;
 	background-image: $bgimg;
 	background-position: $bgpos;
 	background-repeat: no-repeat;
 	background-size: $bgsize;
+	
+ 	@include transition();
 }
 
-.section-head{
-	@include section-bgs($bgimg: url(../img/head.png), $bgpos: center top, $bgsize: 60% auto);
 
-	@include media-query(desk){ 
-	    background-position-x: 43%;
-		background-size: 20%;
+$wingfeetwidth: 320px;
+
+
+.section-head{
+	@include section-bgs($bgimg: url(../img/head.png), $bgsize: 220px auto);
+
+	@include media-query(tablet){ 
+ 		transform: translateX(-55px);
 	}
 		
 }
 .section-lwing{
-	@include section-bgs($bgimg: url(../img/lwing.png));
+	@include section-bgs($bgimg: url(../img/lwing.png), $bgsize: $wingfeetwidth auto);
+	
+	@include media-query(tablet) {
+	    background-position: left top;
+	}
+	
+	@include media-query(desk) {
+	    background-position-x: 92px;
+	    transform: translateY(-21px);
+	}
 }
 
 .section-torso{
-	@include section-bgs($bgimg: url(../img/torso.png), $bgpos: center, $bgsize: 50% auto);
+	height: 8rem;
 	
-	@include media-query(desk) {
-	    background-size: 18% auto;
-	    margin-top: -10.75rem;
+	@include section-bgs($bgimg: url(../img/torso.png), $bgpos: center, $bgsize: 160px auto);
+	
+	@include media-query(tablet) {
+	    transform: translate(305px, -60px);
+	    
+	    padding: 0;
+	    width: 160px;
 	}
-}
-.section-heart{
-	@include section-bgs($bgimg: url(../img/heart.png), $bgpos: center 3rem, $bgsize: 60px auto);
 	
 	@include media-query(desk) {
-		background-position: center top;
-		margin-top: -5.5rem;
-	}
-}
-.section-rwing{
-	@include section-bgs($bgimg: url(../img/rwing.png));
-	
-	@include media-query(desk) {
-		background-position-x: right;
-		margin-top: -15.5rem;
+        transform: translateY(-330px);
+        
+	    width: 100%;
 	}
 }
 
-.section-lwing,
-.section-rwing {
-	@include media-query(desk){ 
-		background-size: 40%;
+.heart {
+	width: 60px;
+	height: auto;
+	
+	@include media-query(tablet) {
+
+		position: absolute;
+		top: 63px;
+		left: 357px;
+		right:0;
+		margin: auto;
+
+	}
+	
+	@include media-query(desk) {
+		top: -88px;
+		left: -660px;
+	}
+}
+
+/*
+.torso-top {
+	display: none;
+	
+	@include media-query(tablet) {
+		display: block;
+		width: 145px;
+		height: auto;
+		
+		position: absolute;
+		top: 36px;
+		left: 10px;
+		right:0;
+		margin: auto;
+	}
+	
+	@include media-query(desk) {
+	    top: -158px;
+	    left: -621px;
+	}
+}
+*/
+
+
+.section-rwing{
+	@include section-bgs($bgimg: url(../img/rwing.png), $bgsize: $wingfeetwidth auto);
+	
+	z-index: -1001;
+	
+	@include media-query(tablet) {
+	    background-position-x: right;
+		transform: translateY(-227px);
+	}
+	
+	@include media-query(desk) {
+        transform: translate(268px, -675px);
+        
+	    width: 55%;
 	}
 }
 
 .section-feet{
-	@include section-bgs($bgimg: url(../img/feet.png), $bgpos: top center);
+	@include section-bgs($bgimg: url(../img/feet.png), $bgsize: $wingfeetwidth auto);
+	
+	@include media-query(tablet) {	
+		transform: translateY(-200px);
+	}
 	
 	@include media-query(desk) {
-		background-size: 30%;
-	    margin-top: -1.25rem;
+	    transform: translateY(-750px);
 	}
+}
+
+
+
+
+/**
+ * heart animation
+ */
+.heart {
+	
+	animation: beat 3s infinite;
+	
+	@keyframes beat {
+		0%, 10%, 50%, 100% {
+			transform: scale(1);
+		}
+		
+		5% {
+			transform: scale(1.02);
+		}
+		15% {
+			transform: scale(1.035);
+		}
+	}
+	
+	@include media-query(desk) {
+		&:hover {
+			animation: beat .8s infinite;
+		}
+		@keyframes beat {
+		  0%, 40%, 100% {
+		    transform: scale(1);
+		  }
+		  25% {
+		    transform: scale(1.02);
+		  }
+		  60% {
+		    transform: scale(1.035);
+		  }
+		}
+	}
+	
+
 }

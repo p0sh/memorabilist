@@ -11,6 +11,8 @@
  */
  
 body {
+	background-color: #fff;
+	color: $black;
 	padding: 2rem .1rem 3.5rem;
 	
 	@include text-shadow;
@@ -25,11 +27,43 @@ section {
 a {
 	color: $crimson;
 	text-shadow: none;
+	
+	&:hover {
+		@include rollover;
+	}
  }
  
 p {
 	padding: 0 0 1rem;
 }
+
+
+footer{
+	@include media-query(tablet){
+		transform: translateY(-200px);
+	}
+	
+	@include media-query(desk){
+	    transform: translateY(-700px);
+	}
+}
+
+					.footnote {
+						color: $grey;
+						font-family: $second-font-family;
+						font-size: $micro-size;
+						padding-top: 3rem;
+						text-align: center;
+						text-shadow: none;
+					
+						a {
+							color: $grey;
+						}
+						
+						@include media-query(desk) {
+							margin-top: 10rem;
+						}
+					}
 
 
 
@@ -47,6 +81,7 @@ p {
 
 
 
+
 .wrapper {
 	max-width: $desk-start;
 	margin: 0 auto;
@@ -55,7 +90,6 @@ p {
 
 
 
- 
 .cta {
 	@include CTA;
 	
@@ -68,119 +102,167 @@ p {
 	margin: 0;
 	padding: 0;
 	text-align: center;
-}
-
-
-
-
-.title {
-	font-family: $display-font-family;
-	margin-top: -4.5rem;
-	text-align: center;
 	
-	@include media-query(desk) {
-		margin-left: -15rem;
+	@include media-query(tablet) {
+	    text-align: right;
+	    padding-right: 1rem;
 	}
 }
-.title-cap {
-	font-size: 8rem;
-}
-.title-rest {
-	font-size: 3.5rem;
-}
 
 
+/**
+ * main sections
+ */
 
-
-
-
-.section-torso {
-	height: 8rem;
-}
 
 .section-head {
 	padding-top: 5rem;	
 	
-	@include media-query(desk) {
+	@include media-query(tablet) {
 		padding-top: 1rem;
 	}
 }
+
+
+					.title {
+						font-family: $display-font-family;
+						margin-top: -4rem;
+						text-align: center;
+					
+					 	@include transition();
+					 		
+						@include media-query(tablet) {
+							transform: translate(-78px, 4px);
+						}
+					}
+					.title-cap {
+						font-size: 8rem;
+					}
+					.title-rest {
+						font-size: 3.5rem;
+					}
+
+
 
 .section-lwing,
 .section-rwing,
 .section-feet {
 	padding-top: 10rem;
-}
-
-.section-lwing {
-	@include media-query(desk) {
-		
-		div {
-	        position: absolute;
-		    width: 30%;
-		    top: 10rem;
-		    left: 1rem;
-		}
-	}
-}
-
-.section-heart {
-	min-height: 10rem;	
-	padding-top: 1rem;
-	padding-bottom: 1rem;
-
-	@include media-query(desk) {
-		div {
-		    min-height: 1rem;
-		    
-		    position: absolute;
-		    width: 30%;
-		    top: 7rem;
-		    right: 1rem;
-		}
+	
+	@include media-query(tablet) {
+		padding-top: 0;
 	}	
 }
 
-.section-rwing {
+.section-lwing {
+	
+	div {
+		padding: 1rem 0;
+		
+		@include media-query(tablet) {
+			
+			width: 55%;
+			
+			transform: translateX(320px);
+		}
+		
+		@include media-query(desk) {
+			width: 30%;
+			
+			transform: translateY(120px);
+			
+			.contains-ctas {
+				text-align: left;
+			}
+		}
+	}
+	
+}
+
+.section-heart {
+	padding-top: 1rem;
+	padding-bottom: 1rem;
+	text-align: center;
+
+	@include media-query(tablet) {
+		transform: translateY(-225px);
+		
+		width: 35%;
+	}
+	
 	@include media-query(desk) {
+        transform: translate(600px, -340px);
+	}
+	
 		div {
-		    position: absolute;
-		    width: 60%;
-		    top: 20rem;
-		    left: 34%;
+			@include media-query(tablet) {
+				padding-top: 1rem;
+				text-align: left;	
+			}
+		}	
+}
+
+					.project-links {
+						font-family: $second-font-family;
+						font-size: $h5-size;
+						padding-top: 1rem;
+						margin-left: 0;
+						text-shadow: none;
+					
+						@include media-query(tablet) {
+							font-size: inherit;
+							line-height: 2rem;
+							padding-top: 0;
+						}	
+						
+						@include media-query(desk) {
+							font-size: $h4-size;
+							line-height: 2.5rem;
+						}
+						
+						li {
+							list-style: none;
+							list-style-image: none;
+						}
+						
+						a {
+							text-decoration: none;
+							
+							&:hover {
+								text-decoration: underline;
+							}
+						}
+					}
+					
+					.coming-soon {
+						color: $grey;
+						
+						&:after {
+							content: " (soon)";
+							
+							font-size: $micro-size;
+						}
+					}
+
+.section-rwing {
+	div {
+		
+		padding-top: 1rem;
+		
+		@include media-query(tablet) {
+			width: 55%;
+		}
+		
+		@include media-query(desk) {
+		    width: 100%;
+		    transform: translateY(347px);
 		}
 	}
 }
 
 .section-feet {
-	@include media-query(desk) {
-		div {
-			position: absolute;
-		    top: 22rem;
-		    left: 0;
-		    right: 0;
-	    }
+	@include media-query(tablet) {
+		padding-top: 10rem;
 	}
-}
 
-
-
-
-
-
-.project-links {
-	padding-top: 5rem;
-	text-align: center;
-
-	@include media-query(desk) {
-		padding-top: 0;
-	}	
-	
-	a {
-		display: block;
-	}
-}
-
-.coming-soon {
-	color: $grey;
 }
