@@ -1,0 +1,41 @@
+/*------------------------------------*\
+    $NAV
+\*------------------------------------*/
+/**
+ * the site nav
+ */
+nav {
+	margin: 1.5rem 0;
+	text-align: center;
+	
+	ul {
+		margin: 0;
+	}
+	
+	li {
+		display: inline;
+		
+		a {
+			@include CTA; // this include means we want the nav to behave the same way as all other CTA buttons
+
+		}
+	}
+}
+
+/* nav on subpages (desk) is fixed */
+.nav-sub {
+	@include media-query(desk) {
+	    position: fixed;
+	    top: 10.5rem;
+	    margin-left: 3rem;
+		
+		li {
+			display: block;
+
+			a {
+				background-color: transparent;
+				margin: 0;
+			}
+		}
+	}
+}

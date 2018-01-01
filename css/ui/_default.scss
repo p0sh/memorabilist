@@ -13,6 +13,7 @@
 body {
 	background-color: #fff;
 	color: $black;
+	font-size: 1.3rem;
 	padding: 2rem .1rem 3.5rem;
 	
 	@include text-shadow;
@@ -34,36 +35,9 @@ a {
  }
  
 p {
-	padding: 0 0 1rem;
+	padding: 0 0 2rem;
 }
 
-
-footer{
-	@include media-query(tablet){
-		transform: translateY(-200px);
-	}
-	
-	@include media-query(desk){
-	    transform: translateY(-700px);
-	}
-}
-
-					.footnote {
-						color: $grey;
-						font-family: $second-font-family;
-						font-size: $micro-size;
-						padding-top: 3rem;
-						text-align: center;
-						text-shadow: none;
-					
-						a {
-							color: $grey;
-						}
-						
-						@include media-query(desk) {
-							margin-top: 10rem;
-						}
-					}
 
 
 
@@ -71,7 +45,159 @@ footer{
 /**
  * classes and such			MOVE TO PARTIALS AS NEEDED
  */ 
+
+/* wrapper to prevent widest bkpt from widening too much */
+.wrapper {
+	max-width: $desk-start;
+	margin: 0 auto;
+}
+
+
+
+$delay-subpage:		.15s;
+.subpage {
+	@include page-fade($delay: $delay-subpage);
+}
+
+
+
+/* page title general styles*/
+
+.title {
+	font-family: $display-font-family;	
+	margin-bottom: 1.5rem;
+	
+	&.sitename {
+	    margin-bottom: 0;
+	}
+}
+.title-cap {
+	font-size: 13.5rem;
+}
+.title-rest {
+    display: inline-flex;
+    font-size: 4.5rem;
+    transform: translate(-15px, -18px);
+}
+
+
+
+/* content etc */
+
+.content {
+	
+	// make room on desk for nav
+	@include media-query(desk) {
+		max-width: $desk-start - 200px;
+		margin-left: 200px;	
+	}
+}
+
  
+.project {
+	font-size: $h5-size;
+    margin: 1rem 0 3rem;
+    
+	//  start grid at breakpoint; universal project grid styles
+	@include media-query(mini-tablet) {
+		display: grid;
+				
+		grid-template-columns: 18.5rem 1fr;
+
+		grid-column-gap: 2rem;
+
+		//	grid styles for art page
+		&.art {
+			grid-template-rows: auto 1fr 1fr;
+			
+			grid-template-areas:
+			"title title"
+			"img desc"
+			"img cta";
+			
+			img {
+				grid-area: img;
+			}
+			
+			.desc {
+				grid-area: desc;
+				align-self: end;
+			}
+		}
+		
+		//	grid styles for ux page
+		&.ux {
+			grid-template-areas: 
+			"title title"
+			"img summary"
+			"img links"
+			"desc desc";
+			
+			img {
+				grid-area: img;
+			}
+			
+			.summary {
+				grid-area: summary;
+				
+				align-self: end;
+				font-size: $h3-size;
+			}
+			
+			.writing-link,
+			.links-project {
+				grid-area: links;
+			}
+			
+			.desc {
+				grid-area: desc;
+				
+				margin-top: 1rem;
+			}
+		}
+	}
+	
+	h1, h2 {
+		font-family: $second-font-family;
+		font-weight: normal;
+		line-height: 1.2;
+		text-transform: uppercase;
+	}
+	
+	h1 {
+		//	h1 grid coverage
+		@include media-query(mini-tablet) {
+			grid-area: 1 / 1 / 2 / 3;
+		}
+	}
+	
+	h2 {
+		font-size: $h4-size;
+		padding: .3rem 0;
+	}
+	
+	img {
+		background-color: #ccc;
+		border: 2px solid $grey;
+		width: 18.5rem;
+		height: auto;
+	}
+	
+	p {
+		padding-bottom: 1rem;
+	}
+	
+	.summary {
+		 @include media-query(phone) {
+			 @include accessibility;
+		 }
+	}
+
+}
+
+
+/* classes for styling content elements */
+
 .secondfont {
 	font-family: $second-font-family;
 }
@@ -80,189 +206,169 @@ footer{
 }
 
 
-
-
-.wrapper {
-	max-width: $desk-start;
-	margin: 0 auto;
-}
-
-
-
-
 .cta {
 	@include CTA;
-	
-	&:hover {
-		@include CTA-rollover;
-	}
 }
 
 .contains-ctas {
 	margin: 0;
-	padding: 0;
-	text-align: center;
 	
-	@include media-query(tablet) {
-	    text-align: right;
-	    padding-right: 1rem;
+	li {
+		display: inline-block;
+		
+		a {
+			@include CTA;
+		}
 	}
 }
 
-
-/**
- * main sections
- */
-
-
-.section-head {
-	padding-top: 5rem;	
-	
-	@include media-query(tablet) {
-		padding-top: 1rem;
-	}
+.footnote {
+	margin-top: 3rem;
+	font-size: .9rem;
 }
 
 
-					.title {
-						font-family: $display-font-family;
-						margin-top: -4rem;
-						text-align: center;
-					
-					 	@include transition();
-					 		
-						@include media-query(tablet) {
-							transform: translate(-78px, 4px);
-						}
-					}
-					.title-cap {
-						font-size: 8rem;
-					}
-					.title-rest {
-						font-size: 3.5rem;
-					}
 
 
 
-.section-lwing,
-.section-rwing,
-.section-feet {
-	padding-top: 10rem;
+
+/* page specific */
+/* subpages headers */
+.header-about {
+	
+	@include section-bgs($bgimg: url(../img/feet.png), $bgpos: right top, $bgsize: 250px auto);
+	
+ 	transform: translate(11rem, -4rem);
+	
+	.title {
+ 	    transform: translate(-9.5rem, 4rem);
+	}
+	
+	.title-cap {
+		line-height: 1rem;
+	}
+
+}
+
+
+.header-art {
+	
+	@include section-bgs($bgimg: url(../img/rwing.png), $bgpos: 6rem 1rem, $bgsize: 230px auto);
+	
+	transform: translateX(3rem);
+	
+	.title {
+        transform: translateX(-27px);
+	}
+	
+	.title-cap {
+		line-height: 1rem;
+	}
+	
+	.title-rest {
+	    transform: translate(-19px, -35px);
+	}
+
+}
+
+ 
+.header-ux {
+	
+	@include section-bgs($bgimg: url(../img/lwing.png), $bgpos: left top, $bgsize: 230px auto);
+	
+	transform: translateX(-7.5rem);
+	
+	@include media-query(mini-tablet) {
+		transform: translateX(-5.5rem);
+	}
 	
 	@include media-query(tablet) {
-		padding-top: 0;
+		transform: translateX(-3.5rem);
 	}	
-}
-
-.section-lwing {
-	
-	div {
-		padding: 1rem 0;
-		
-		@include media-query(tablet) {
-			
-			width: 55%;
-			
-			transform: translateX(320px);
-		}
-		
-		@include media-query(desk) {
-			width: 30%;
-			
-			transform: translateY(120px);
-			
-			.contains-ctas {
-				text-align: left;
-			}
-		}
-	}
-	
-}
-
-.section-heart {
-	padding-top: 1rem;
-	padding-bottom: 1rem;
-	text-align: center;
-
-	@include media-query(tablet) {
-		transform: translateY(-225px);
-		
-		width: 35%;
-	}
 	
 	@include media-query(desk) {
-        transform: translate(600px, -340px);
+		transform: translateX(-0.5rem);
+	}		
+	
+	.title {
+		line-height: 1rem;
+		transform: translateX(14rem);
 	}
 	
-		div {
-			@include media-query(tablet) {
-				padding-top: 1rem;
-				text-align: left;	
-			}
-		}	
-}
-
-					.project-links {
-						font-family: $second-font-family;
-						font-size: $h5-size;
-						padding-top: 1rem;
-						margin-left: 0;
-						text-shadow: none;
-					
-						@include media-query(tablet) {
-							font-size: inherit;
-							line-height: 2rem;
-							padding-top: 0;
-						}	
-						
-						@include media-query(desk) {
-							font-size: $h4-size;
-							line-height: 2.5rem;
-						}
-						
-						li {
-							list-style: none;
-							list-style-image: none;
-						}
-						
-						a {
-							text-decoration: none;
-							
-							&:hover {
-								text-decoration: underline;
-							}
-						}
-					}
-					
-					.coming-soon {
-						color: $grey;
-						
-						&:after {
-							content: " (soon)";
-							
-							font-size: $micro-size;
-						}
-					}
-
-.section-rwing {
+	.title-cap {
+		line-height: 1rem;
+	}
+	
 	div {
-		
-		padding-top: 1rem;
-		
-		@include media-query(tablet) {
-			width: 55%;
-		}
-		
-		@include media-query(desk) {
-		    width: 100%;
-		    transform: translateY(347px);
-		}
+		display: inline-block;
+	}
+	
+	.title-cap-2 {
+		font-size: 8.5rem;
+	}
+	
+	.title-rest {
+		display: block;
+		transform: none;
+	}
+
+} 
+
+
+/* UX page */
+.ux-ctas {
+	@extend .contains-ctas;
+	
+	@include media-query(mini-tablet) {
+		padding-bottom: 1rem;
+		text-align: left !important;
 	}
 }
 
-.section-feet {
-	@include media-query(tablet) {
-		padding-top: 10rem;
-	}
 
+.writing-link {
+	@include CTA;
+
+	margin: 0;
+	text-align: left;
+}
+
+
+.medium {
+	background-image: url(../img/ux/medium.png);
+	background-repeat: no-repeat;
+	background-position: 8px 8px;	
+
+	margin-top: 8px;
+	padding: 10px 0px 0px 48px;
+    height: 38px;	
+}
+
+.links-project {
+	@extend .contains-ctas;
+}
+
+.sidebar {
+	background-color: $greyLightest;
+	font-size: $h5-size;
+	padding-top: .3rem;
+	padding-bottom: 1rem;
+	
+	h1 {
+		font-family: $second-font-family;
+		font-weight: normal;
+		text-transform: uppercase;
+	}
+}
+
+
+/* art page */
+
+.coming-soon {
+	
+	&:after {
+		content: " (coming soon)";
+		color: $greyDarker;
+		font-size: $micro-size;
+	}
 }

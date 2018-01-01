@@ -1,0 +1,155 @@
+/*------------------------------------*\
+    $MIXINS
+\*------------------------------------*/
+
+/**
+ * GENERAL F11Y
+ */
+ 
+ 
+ 
+/**
+ * Media query mixin.
+ *
+ * It's not great practice to define solid breakpoints up-front, preferring to
+ * modify your design when it needs it, rather than assuming you'll want a
+ * change at 'mobile'. However, as inuit.css is required to take a hands off
+ * approach to design decisions, this is the closest we can get to baked-in
+ * responsiveness. It's flexible enough to allow you to set your own breakpoints
+ * but solid enough to be frameworkified.
+ *
+ * We define some broad breakpoints in our vars file that are picked up here
+ * for use in a simple media query mixin. Our options are:
+ *
+ * palm
+ * lap
+ * lap-and-up
+ * portable
+ * desk
+ * desk-wide
+ *
+ * Not using a media query will, naturally, serve styles to all devices.
+ *
+ * `@include media-query(palm){ [styles here] }`
+ *
+
+ */
+
+
+@mixin media-query($media-query){
+
+    @if $media-query == tablet{
+
+        @media only screen and (min-width:$tablet-start) { @content; }
+
+    }
+
+    @if $media-query == desk{
+
+        @media only screen and (min-width:$desk-start) { @content; }
+
+    }
+
+}
+
+
+/**
+ * Create a fully formed type style (sizing and vertical rhythm) by passing in a
+ * single value, e.g.:
+ *
+   `@include font-size(10px);`
+ *
+ * Thanks to @redclov3r for the `line-height` Sass:
+ * twitter.com/redclov3r/status/250301539321798657
+ */
+@mixin font-size($font-size, $line-height:true){
+    font-size:$font-size;
+    font-size:($font-size / $base-font-size)*1rem;
+    @if $line-height == true{
+        line-height:ceil($font-size / $base-line-height) * ($base-line-height / $font-size);
+    }
+}
+
+
+
+/**
+ * Create vendor-prefixed CSS in one go, e.g.
+ *
+   `@include vendor(border-radius, 4px);`
+ *
+ *
+ * NOTE: LEAVING THIS MIXIN, THO PROBS DONT NEED IT FOR MUCH ANYMORE, HOORAY 4 SUPPORT :)
+ */
+@mixin vendor($property, $value...){
+    -webkit-#{$property}:$value;
+       -moz-#{$property}:$value;
+        -ms-#{$property}:$value;
+         -o-#{$property}:$value;
+            #{$property}:$value;
+}
+
+
+
+
+
+/**
+ * STYLING
+ */
+
+/**
+ * Transition 
+ */
+@mixin transition(){
+	transition-duration: $timing-hover;
+	transition-property: all;
+	transition-timing-function: ease;
+}
+
+/**
+ * Text-shadow settings
+ */
+@mixin text-shadow ($x: 1px, $y: 1px, $blur: 1.5px, $color: $greyTouch){
+	text-shadow: $x $y $blur $color; 
+}
+
+/**
+ * White text
+ */
+@mixin reverse-text(){
+	color: $white;
+	@include text-shadow ($blur: 2px);	
+}
+
+/**
+ * General CTA style
+ */
+@mixin CTA($bg: $greyLight, $text: $black, $margin: .5rem auto 1rem, $padding: 0.2rem 1rem){
+	background-color: $bg;
+	border-radius: $round;
+	color: $text;
+	display: inline-block;
+	font-family: $second-font-family;
+	letter-spacing: .05rem;
+	margin: $margin;
+	padding: $padding;
+	text-align: center;
+	text-decoration: none;	
+	text-shadow: none;
+}
+
+@mixin CTA-rollover($bg: $greyDarkest, $text: $white){
+	background-color: $bg;
+	color: $text;
+	
+	@include transition;
+}
+
+/**
+ * Rollover style
+ */
+@mixin rollover(){
+	background-color: $greyLight;
+	
+	@include transition;
+}
+

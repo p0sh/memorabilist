@@ -1,0 +1,282 @@
+/*------------------------------------*\
+    $DEFAULT
+\*------------------------------------*/
+/** 
+ * Default element styles
+ */
+ 
+
+/**
+ * all the single DOM elements, put your styles up
+ */
+ 
+body {
+	background-color: #fff;
+	color: $black;
+	padding: 2rem .1rem 3.5rem;
+	
+	@include text-shadow;
+} 
+
+section {
+	padding: 0 1.5rem;
+	position: relative;
+}
+ 
+
+a {
+	color: $crimson;
+	text-shadow: none;
+	
+	&:hover {
+		@include rollover;
+	}
+ }
+ 
+p {
+	padding: 0 0 1rem;
+}
+
+
+footer{
+	@include media-query(tablet){
+		transform: translateY(-200px);
+	}
+	
+	@include media-query(desk){
+	    transform: translateY(-700px);
+	}
+}
+
+					.footnote {
+						color: $grey;
+						font-family: $second-font-family;
+						font-size: $micro-size;
+						padding-top: 3rem;
+						text-align: center;
+						text-shadow: none;
+					
+						a {
+							color: $grey;
+						}
+						
+						@include media-query(desk) {
+							margin-top: 10rem;
+						}
+					}
+
+
+
+
+/**
+ * classes and such			MOVE TO PARTIALS AS NEEDED
+ */ 
+ 
+.secondfont {
+	font-family: $second-font-family;
+}
+.displayfont {
+	font-family: $display-font-family;
+}
+
+
+
+
+.wrapper {
+	max-width: $desk-start;
+	margin: 0 auto;
+}
+
+
+
+
+.cta {
+	@include CTA;
+	
+	&:hover {
+		@include CTA-rollover;
+	}
+}
+
+.contains-ctas {
+	margin: 0;
+	padding: 0;
+	text-align: center;
+	
+	@include media-query(tablet) {
+	    padding-right: 1rem;
+	}
+	
+	@include media-query(desk) {
+		text-align: center;
+	}
+}
+
+
+.project-links {
+	font-family: $second-font-family;
+	font-size: $h5-size;
+	padding-top: 1rem;
+	margin-left: 0;
+	text-shadow: none;
+
+	@include media-query(tablet) {
+		font-size: inherit;
+		line-height: 2rem;
+		padding-top: 0;
+	}	
+	
+	@include media-query(desk) {
+		font-size: $h4-size;
+		line-height: 2.5rem;
+	}
+	
+	li {
+		list-style: none;
+		list-style-image: none;
+	}
+	
+	a {
+		color: $black;
+		text-decoration: none;
+		
+		&:hover {
+			border-bottom: 1px solid;
+			
+			@include transition;
+		}
+	}
+}
+
+.coming-soon {
+	color: $greyDarker;
+	
+	&:after {
+		content: " (soon)";
+		
+		font-size: $micro-size;
+	}
+}
+
+
+/**
+ * main sections
+ */
+
+
+.section-head {
+	padding-top: 5rem;	
+	
+	@include media-query(tablet) {
+		padding-top: 1rem;
+	}
+}
+
+
+					.title {
+						font-family: $display-font-family;
+						margin-top: -4rem;
+						text-align: center;
+					
+					 	@include transition();
+					 		
+						@include media-query(tablet) {
+							transform: translate(-78px, 4px);
+						}
+					}
+					.title-cap {
+						font-size: 8rem;
+					}
+					.title-rest {
+						font-size: 3.5rem;
+					}
+
+
+
+.section-lwing,
+.section-rwing,
+.section-feet {
+	padding-top: 10rem;
+	
+	@include media-query(tablet) {
+		padding-top: 0;
+	}	
+}
+
+.section-lwing {
+	
+	div {
+		padding: 1rem 0;
+		
+		@include media-query(tablet) {
+			
+			width: 55%;
+			
+			transform: translateX(320px);
+			
+			.contains-ctas {
+			    text-align: right;
+			}
+		}
+		
+		@include media-query(desk) {
+			transform: translateY(120px);
+			
+			.contains-ctas {
+				text-align: left;
+			}
+		}
+	}
+	
+}
+
+.section-heart {
+	padding-top: 1rem;
+	padding-bottom: 1rem;
+	text-align: center;
+
+	@include media-query(tablet) {
+		transform: translateY(-225px);
+		
+		width: 35%;
+	}
+	
+	@include media-query(desk) {
+        transform: translate(600px, -340px);
+            
+		z-index: 2001;
+
+	}
+	
+		div {
+			@include media-query(tablet) {
+				padding-top: 1rem;
+				text-align: left;	
+			}
+		}	
+}
+
+
+
+.section-rwing {
+	div {
+		
+		padding-top: 1rem;
+		
+		@include media-query(tablet) {
+			width: 55%;
+		}
+		
+		@include media-query(desk) {
+		    width: 100%;
+		    transform: translateY(347px);
+		}
+	}
+}
+
+.section-feet {
+	@include media-query(tablet) {
+		padding-top: 10rem;
+	}
+
+}

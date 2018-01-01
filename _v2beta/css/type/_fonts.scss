@@ -1,0 +1,57 @@
+/*------------------------------------*\
+    $FONTS
+\*------------------------------------*/
+ 
+
+/**
+ * Sets font paths
+ */
+@mixin font-face($fontFamily, $path, $fontFilename) {
+  font-family: $fontFamily;
+  src: url('.#{$path}#{$fontFilename}.eot');
+  src: url('.#{$path}#{$fontFilename}.eot?#iefix') format('embedded-opentype'),
+       url('.#{$path}#{$fontFilename}.woff') format('woff'),
+       url('.#{$path}#{$fontFilename}.ttf') format('truetype'),
+       url('.#{$path}#{$fontFilename}.svg') format('svg');
+}
+
+
+
+
+/*------------------------------------*\
+    TYPE
+\*------------------------------------*/
+
+/**
+ * list typefaces + purpose here:
+ * ex. FACENAME1 (display)
+ * ex. FACENAME2 (body)
+ */
+
+@font-face {
+  @include font-face('lmroman10', $fontPath, 'lmroman10-regular-webfont');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  @include font-face('lmroman10', $fontPath, 'lmroman10-bold-webfont');
+  font-weight: bold;
+  font-style: normal;
+}
+
+
+
+
+@font-face {
+  @include font-face('kilkenny', $fontPath, '29DBA3_0_0');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+@font-face {
+  @include font-face('greatvic', $fontPath, 'greatvictorian-standard-webfont');
+  font-weight: normal;
+  font-style: normal;
+}

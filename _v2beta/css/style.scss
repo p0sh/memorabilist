@@ -1,0 +1,75 @@
+/* 
+	
+jA
+
+ * credit to inuitcss.com -- @inuitcss -- @csswizardry
+ * some of the base Sass for this project is lifted liberally
+ * from Harry Roberts' InuitCSS, 2013 version. Thank you for teaching me Sass.
+	
+*/
+
+@charset "UTF-8";
+
+
+/*------------------------------------*\
+    STYLE.CSS
+\*------------------------------------*/
+/**
+ *
+ * sass --watch style.scss:style.min.css --style compressed
+ *
+ */
+
+
+@import url('https://fonts.googleapis.com/css?family=Oswald:400,600|Roboto+Condensed:400,700');
+
+
+/**
+ * Variables
+ */
+@import "vars";
+
+
+
+/*------------------------------------*\
+    $BASE
+\*------------------------------------*/
+/**
+ * General settings for the entire site.
+ */
+@import "base/resetnormalize";
+@import "base/base";
+ 
+
+/*------------------------------------*\
+    $TOOLS
+\*------------------------------------*/
+/**
+ * These are custom mixins and functions.
+ */
+@import "tools/mixins";
+@import "tools/helpers";
+
+
+
+/*------------------------------------*\
+    $TYPE
+\*------------------------------------*/
+/**
+ * General typography settings.
+ */
+ @import "type/fonts";
+ @import "type/headings";
+ 
+
+/*------------------------------------*\
+    $UI
+\*------------------------------------*/
+/**
+ * Fully styled chunks of the UI.
+ */
+@import "ui/imgs";
+
+@import "ui/default";
+
+

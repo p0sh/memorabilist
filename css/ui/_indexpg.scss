@@ -1,0 +1,278 @@
+/*------------------------------------*\
+    $INDEX PAGE
+\*------------------------------------*/
+/** 
+ * the complicated layout of the index page
+ */
+ 
+
+/* vars for index page animation sequence */
+$delay-title: 		.1s;
+
+$delay-start:		1s;
+
+$delay-head: 		$delay-start + .2;
+$delay-lwing: 		$delay-start + .5;
+$delay-torso: 		$delay-start + .8;
+$delay-rwing: 		$delay-start + 1;
+$delay-feet: 		$delay-start + 1.1;
+$delay-heart: 		$delay-start + 1.2;
+$delay-nav: 		$delay-start + 1.5;
+
+
+
+
+ /* section bg imgs settings */ 
+ @mixin section-bgs($bgimg, $bgpos: center top, $bgsize: contain){
+	background-color: transparent;
+	background-image: $bgimg;
+	background-position: $bgpos;
+	background-repeat: no-repeat;
+	background-size: $bgsize;
+	
+ 	@include transition();
+}
+
+$wingfeetwidth: 292px;
+
+
+
+
+
+ /* section bg imgs positioning and animation */ 
+.section-head{
+	height: 9rem;	
+		
+	@include section-bgs($bgimg: url(../img/head.png), $bgsize: 200px auto);
+	
+	@include page-fade($delay: $delay-head);
+
+	@include media-query(tablet){ 
+ 		padding-top: 1rem; 		
+	}
+
+	@include media-query(desk) {
+		transform: translateX(-52px);
+	}	
+		
+}
+
+
+
+
+/* site title */
+.sitename {
+	line-height: 1.3;
+	margin-top: -12rem; // using transform the height is too much
+	text-align: center;
+	
+ 	@include page-fade($duration: .5s, $delay: $delay-title);
+
+ 	@include transition();
+ 		
+	@include media-query(tablet) {
+	    margin-top: -12rem;
+	}
+
+	@include media-query(desk) {
+		margin-top: -19.1rem;
+	    margin-left: -21rem;
+        transform: translate(-48px, 8px);
+	}	
+	
+	.title-cap {
+
+	    @include media-query(tablet) {
+		    font-size: 12.3rem;
+	    }
+	    
+	    @include media-query(desk) {
+		    font-size: 15rem;
+	    }
+	}
+	.title-rest {
+		    
+	    @include media-query(tablet) {
+		    transform: translate(-12px,-20px);
+	    }
+	    
+	    @include media-query(desk) {
+	        font-size: 5rem;
+	        transform: translate(-12px,-18px);
+	    }
+	}
+}
+
+
+
+
+
+
+.section-lwing{
+	padding-top: 9rem; // pushes text into position
+	transform: translateY(-2rem); // pulls wing up to title a bit
+	
+	@include section-bgs($bgimg: url(../img/lwing.png), $bgsize: $wingfeetwidth auto);
+	
+	@include page-fade($delay: $delay-lwing);
+	
+	p {
+		max-width: 30rem;
+		margin: 0 auto;
+		padding-bottom: 1rem;
+	}
+		
+	
+	@include media-query(tablet) {
+	    background-position: 1rem top;
+	    height: 10.5rem;
+	    padding-top: 0;
+	    padding-left: $wingfeetwidth; // make room for width of wing
+	    
+	    p {
+		    padding: 1rem 0 0 2rem;
+	    }
+	}
+	
+	@include media-query(desk) {
+		padding-left: 0;
+        transform: translate(132px, -52px);
+		
+		p {
+		    margin-left: -9rem;
+		    max-width: 20rem;
+		    padding-top: 8rem;
+		}
+	}	
+}
+
+
+
+
+
+.section-torso{
+	height: 8rem;
+	text-align: center;
+	
+	@include section-bgs($bgimg: url(../img/torso.png), $bgsize: 140px auto);
+	
+	@include page-fade($delay: $delay-torso);
+	
+	@include media-query(tablet) {
+		background-position: 8.5rem top;
+		height: 7.5rem;
+	}
+	
+	@include media-query(desk) {
+		background-position: center top;
+	    transform: translateY(-214px);
+	}
+}
+
+
+
+
+
+.section-rwing{
+	padding-bottom: 9rem; // pushes text into position
+	
+	@include section-bgs($bgimg: url(../img/rwing.png), $bgpos: center bottom, $bgsize: $wingfeetwidth auto);
+	
+	@include page-fade($delay: $delay-rwing);
+	
+	z-index: -1001;
+
+	
+	p {
+		text-align: center;
+	}	
+	
+	@include media-query(tablet) {
+	    background-position: right;
+	    height: 10.5rem;
+	    padding-bottom: 8rem;
+	    padding-left: $wingfeetwidth; // line up below lwing text
+	    transform: translate(0px, -200px);
+		
+		p {
+			padding: 1rem 0 0 2rem;
+			margin: 0 auto;
+			max-width: 30rem;
+			text-align: left;	
+		}
+	}
+	
+	@include media-query(desk) {
+		padding-left: 0;
+        transform: translate(-145px, -412px);
+	    
+	    p {
+            margin-right: -5rem;
+		    max-width: 12rem;
+		    padding-top: 14rem;
+	    }
+	}
+
+}
+
+
+
+
+
+.section-feet{
+	height: 8rem;
+	
+	@include section-bgs($bgimg: url(../img/feet.png), $bgsize: $wingfeetwidth auto);
+	
+	@include page-fade($delay: $delay-feet);
+	
+	@include media-query(tablet) {	
+		height: 10rem;		
+		transform: translateY(-355px);
+	}
+	
+	@include media-query(desk) {
+		transform: translateY(-724px);
+	}
+}
+
+
+
+
+
+/* the heart on index page */
+.heart-index {
+	
+// 	opacity: 0;
+	@include page-fade($delay: $delay-heart);
+	
+	@include media-query(tablet) {
+		transform: translateY(-404px);
+	}
+	
+	@include media-query(desk) {
+	    transform: translateY(-636px);
+	}	
+}
+
+
+
+
+
+/* nav positioning on index page */
+.nav-index {
+	
+	@include page-fade($delay: $delay-nav);
+	
+	@include media-query(tablet) {
+		transform: translateY(-350px);
+	}
+	
+	@include media-query(desk) {
+		transform: translateY(-475px);
+		
+		li {
+			display: inline-block;
+		}
+	}
+} 
