@@ -164,9 +164,10 @@
 	@include transition;
 }
 
-@mixin CTA($bg: $greyLight, $text: $black, $margin: .5rem auto 1rem, $padding: 0.2rem .7rem){
+@mixin CTA($bg: $greyLightest, $text: $black, $margin: .5rem 0 1rem, $padding: 0.2rem .7rem){
 	background-color: $bg;
 	border-radius: $round;
+	border: none;
 	color: $text;
 	display: inline-block;
 	font-family: $second-font-family;

@@ -43,7 +43,7 @@ p {
 
 
 /**
- * classes and such			MOVE TO PARTIALS AS NEEDED
+ * Classes and such			MOVE TO PARTIALS AS NEEDED
  */ 
 
 /* wrapper to prevent widest bkpt from widening too much */
@@ -53,7 +53,7 @@ p {
 }
 
 
-
+/* fade in each subpage */
 $delay-subpage:		.15s;
 .subpage {
 	@include page-fade($delay: $delay-subpage);
@@ -62,7 +62,6 @@ $delay-subpage:		.15s;
 
 
 /* page title general styles*/
-
 .title {
 	font-family: $display-font-family;	
 	margin-bottom: 1.5rem;
@@ -82,10 +81,8 @@ $delay-subpage:		.15s;
 
 
 
-/* content etc */
-
+/* content styles */
 .content {
-	
 	// make room on desk for nav
 	@include media-query(desk) {
 		max-width: $desk-start - 200px;
@@ -93,7 +90,124 @@ $delay-subpage:		.15s;
 	}
 }
 
- 
+.secondfont {
+	font-family: $second-font-family;
+}
+.displayfont {
+	font-family: $display-font-family;
+}
+
+.sidebar {
+	background-color: $greyLightest;
+	font-size: $h5-size;
+	padding-top: .3rem;
+	padding-bottom: 1rem;
+	
+	h1 {
+		font-family: $second-font-family;
+		font-weight: normal;
+		text-transform: uppercase;
+	}
+}
+
+.footnote {
+	margin-top: 3rem;
+	font-size: .9rem;
+}
+
+
+
+/* types of links and CTAs */
+.cta {
+	@include CTA;
+}
+
+.contains-ctas { // nice horizontal list of CTAs
+	margin: 0;
+	
+	li {
+		display: inline-block;
+		
+		a {
+			@include CTA;
+		}
+	}
+}
+
+
+@mixin cta-icon($bg-size: 1.5rem, $bg-pos: .5rem center, $padd: .5rem .5rem .5rem 2.5rem !important){ // put SVG icon as bg img on the left
+	background-repeat: no-repeat;
+	background-size: $bg-size;
+	background-position: $bg-pos;	
+
+	padding: $padd; //overrides .contains-ctas
+}
+
+[class^="icon-"], [class*=" icon-"]{
+	@include cta-icon;
+}
+
+// icons for CTAs
+.icon-cv {
+ 	background-image: url(../svg/cv.svg);
+}
+.icon-download {
+ 	background-image: url(../svg/download.svg);
+}
+.icon-info {
+ 	background-image: url(../svg/information.svg);
+}
+.icon-linkedin {
+ 	background-image: url(../svg/linkedin.svg);
+}
+.icon-mail {
+ 	background-image: url(../svg/mail.svg);
+}
+.icon-medium {
+ 	background-image: url(../svg/medium.svg);
+}
+.icon-pdf {
+ 	background-image: url(../svg/pdf.svg);
+}
+.icon-resume {
+ 	background-image: url(../svg/resume.svg);
+}
+
+.readit-toggle { // toggle for project details
+	@include CTA;
+	@include cta-icon($bg-pos: center center, $padd: .5rem !important);
+	
+	@extend .icon-info;
+	
+	display: block;
+	width: 2rem;
+	height: 2rem;
+	
+/*
+	span:after {
+		content: "Read about it";
+	}
+*/
+}
+
+
+
+
+.coming-soon {
+	
+	&:after {
+		content: " (coming soon)";
+		color: $greyDarker;
+		font-size: $micro-size;
+	}
+}
+
+
+
+
+/**
+ * STYING and GRID for PROJECT CHUNKS: UX and ART
+ */
 .project {
 	font-size: $h5-size;
     margin: 1rem 0 3rem;
@@ -106,7 +220,7 @@ $delay-subpage:		.15s;
 
 		grid-column-gap: 2rem;
 
-		//	grid styles for art page
+		//	CSSGRID/SPECIFIC SETTINGS for ART PAGE
 		&.art {
 			grid-template-rows: auto 1fr 1fr;
 			
@@ -123,37 +237,53 @@ $delay-subpage:		.15s;
 				grid-area: desc;
 				align-self: end;
 			}
+			
+			.contains-ctas {
+				grid-area: cta;
+			}
 		}
 		
-		//	grid styles for ux page
+		//	CSSGRID/SPECIFIC SETTINGS for UX PAGE
 		&.ux {
 			grid-template-areas: 
-			"title title"
+			"img title"
 			"img summary"
-			"img links"
+			"img readit"
 			"desc desc";
 			
 			img {
 				grid-area: img;
 			}
 			
+			h1 {
+				grid-area: title;
+				align-self: end;
+				
+			    margin-bottom: .5rem;
+			}
+			
 			.summary {
 				grid-area: summary;
 				
-				align-self: end;
+				align-self: start;
 				font-size: $h3-size;
 			}
 			
-			.writing-link,
-			.links-project {
-				grid-area: links;
+			.readit-toggle {
+				grid-area: readit;
+			
+				align-self: start;
+				justify-self: start;
 			}
 			
 			.desc {
 				grid-area: desc;
-				
-				margin-top: 1rem;
 			}
+			
+			.writing-link,
+			.links-project {
+				grid-area: desc;
+			}			
 		}
 	}
 	
@@ -162,13 +292,6 @@ $delay-subpage:		.15s;
 		font-weight: normal;
 		line-height: 1.2;
 		text-transform: uppercase;
-	}
-	
-	h1 {
-		//	h1 grid coverage
-		@include media-query(mini-tablet) {
-			grid-area: 1 / 1 / 2 / 3;
-		}
 	}
 	
 	h2 {
@@ -185,55 +308,34 @@ $delay-subpage:		.15s;
 	
 	p {
 		padding-bottom: 1rem;
-	}
+	} 
 	
-	.summary {
-		 @include media-query(phone) {
-			 @include accessibility;
-		 }
-	}
-
-}
-
-
-/* classes for styling content elements */
-
-.secondfont {
-	font-family: $second-font-family;
-}
-.displayfont {
-	font-family: $display-font-family;
-}
-
-
-.cta {
-	@include CTA;
-}
-
-.contains-ctas {
-	margin: 0;
-	
-	li {
-		display: inline-block;
+	&.ux {
+		h1 {
+		    margin-bottom: .3rem;
+		}
 		
-		a {
-			@include CTA;
+		.summary {
+		    padding-bottom: .5rem;	
+		}
+		
+		.desc {
+			margin-top: 1rem;	
+		}
+		
+		.readit-toggle {
+			letter-spacing: .02rem;
 		}
 	}
 }
 
-.footnote {
-	margin-top: 3rem;
-	font-size: .9rem;
-}
 
 
 
 
-
-
-/* page specific */
-/* subpages headers */
+/* 
+ * HEADERS for SUBPAGES 
+ */
 .header-about {
 	
 	@include section-bgs($bgimg: url(../img/feet.png), $bgpos: right top, $bgsize: 250px auto);
@@ -312,63 +414,15 @@ $delay-subpage:		.15s;
 		transform: none;
 	}
 
-} 
-
-
-/* UX page */
-.ux-ctas {
-	@extend .contains-ctas;
-	
-	@include media-query(mini-tablet) {
-		padding-bottom: 1rem;
-		text-align: left !important;
-	}
 }
 
 
-.writing-link {
-	@include CTA;
-
-	margin: 0;
-	text-align: left;
-}
 
 
-.medium {
-	background-image: url(../img/ux/medium.png);
-	background-repeat: no-repeat;
-	background-position: 8px 8px;	
-
-	margin-top: 8px;
-	padding: 10px 0px 0px 48px;
-    height: 38px;	
-}
-
-.links-project {
-	@extend .contains-ctas;
-}
-
-.sidebar {
-	background-color: $greyLightest;
-	font-size: $h5-size;
-	padding-top: .3rem;
-	padding-bottom: 1rem;
-	
-	h1 {
-		font-family: $second-font-family;
-		font-weight: normal;
-		text-transform: uppercase;
-	}
-}
 
 
-/* art page */
 
-.coming-soon {
-	
-	&:after {
-		content: " (coming soon)";
-		color: $greyDarker;
-		font-size: $micro-size;
-	}
-}
+/**
+ * SVG
+ */
+
